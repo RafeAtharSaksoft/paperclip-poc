@@ -21,8 +21,23 @@ This repo exists to validate that Paperclip can interact with GitHub end-to-end,
 |---|---|
 | `README.md` | This file |
 | `.gitignore` | Standard ignore rules |
+| `AGENTS.md` | Engineering workflow for Paperclip agents |
+| `todo.py` | Simple CLI ToDo app (see Usage below) |
 
 More files may appear as integration scenarios are exercised.
+
+## Usage — `todo.py`
+
+A minimal command-line ToDo app. Tasks are persisted to `todos.json` in the current working directory.
+
+```bash
+python todo.py add "write the README"
+python todo.py list
+python todo.py done 1
+python todo.py remove 1
+```
+
+Requires Python 3.9+. No external dependencies.
 
 ## Related
 
