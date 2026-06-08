@@ -11,23 +11,9 @@ Usage:
 Tasks are persisted to todos.json in the current working directory.
 """
 
-import json
 import sys
-from pathlib import Path
 
-DATA_FILE = Path("todos.json")
-
-
-def load():
-    if not DATA_FILE.exists():
-        return {"next_id": 1, "tasks": []}
-    with DATA_FILE.open("r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def save(data):
-    with DATA_FILE.open("w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
+from todo_store import load, save
 
 
 def cmd_add(args):
