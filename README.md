@@ -50,12 +50,33 @@ removed #2
 
 Tasks live in `todos.json` next to wherever you run the command. Move or delete the file to start fresh.
 
+## Web UI
+
+A Flask web app that exposes the same CRUD operations as the CLI, sharing the same `todos.json` data file so both interfaces stay in sync.
+
+### Requirements
+
+- Python 3.8+
+- Flask (`pip install -r requirements.txt`)
+
+### Usage
+
+```
+pip install -r requirements.txt
+python app.py
+```
+
+Opens on **http://localhost:5000**. Supports add, mark done, and remove — same operations as the CLI.
+
 ## Structure
 
 | Path | Description |
 |---|---|
 | `README.md` | This file |
 | `todo.py` | Python CLI ToDo app |
+| `app.py` | Flask web UI |
+| `templates/index.html` | Web UI template |
+| `requirements.txt` | Python dependencies (`flask>=3.0`) |
 | `AGENTS.md` | Agent workflow rules |
 | `.gitignore` | Standard ignore rules |
 
