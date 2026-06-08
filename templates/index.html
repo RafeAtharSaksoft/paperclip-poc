@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 0 16px; }
+    h1 { font-size: 1.6rem; margin-bottom: 1rem; }
+    form.add-form { display: flex; gap: 8px; margin-bottom: 1.5rem; }
+    form.add-form input[type="text"] { flex: 1; padding: 8px; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; }
+    form.add-form button { padding: 8px 16px; font-size: 1rem; cursor: pointer; background: #2563eb; color: white; border: none; border-radius: 4px; }
+    ul { list-style: none; padding: 0; }
+    li { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #eee; }
+    li.done-task span { text-decoration: line-through; color: #888; }
+    li span { flex: 1; }
+    button.done-btn { background: #16a34a; color: white; border: none; border-radius: 4px; padding: 4px 10px; cursor: pointer; }
+    button.remove-btn { background: #dc2626; color: white; border: none; border-radius: 4px; padding: 4px 10px; cursor: pointer; }
+    p.empty { color: #888; }
+  </style>
+</head>
+<body>
+  <h1>Todo App</h1>
+
+  <form class="add-form" method="post" action="/add">
+    <input type="text" name="text" placeholder="New task…" required autofocus>
+    <button type="submit">Add</button>
+  </form>
+
+  {% if tasks %}
+  <ul>
+    {% for task in tasks %}
+    <li class="{{ 'done-task' if task.done else '' }}">
+      <span>#{{ task.id }} — {{ task.text }}</span>
+      {% if not task.done %}
+      <form method="post" action="/done/{{ task.id }}" style="display:inline">
+        <button class="done-btn" type="submit">Done</button>
+      </form>
+      {% endif %}
+      <form method="post" action="/remove/{{ task.id }}" style="display:inline">
+        <button class="remove-btn" type="submit">Remove</button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="empty">(no tasks)</p>
+  {% endif %}
+</body>
+</html>
