@@ -1,6 +1,6 @@
 # paperclip-poc
 
-A proof-of-concept repository for testing **Paperclip** and its integration with GitHub. Includes a simple Python CLI ToDo app as the primary deliverable.
+A proof-of-concept repository for testing **Paperclip** and its integration with GitHub. Includes a simple Python CLI ToDo app and a Flask web UI as the primary deliverables.
 
 ## Todo CLI
 
@@ -52,18 +52,18 @@ Tasks live in `todos.json` next to wherever you run the command. Move or delete 
 
 ## Web UI
 
-A Flask web app that exposes the same CRUD operations as the CLI, sharing the same `todos.json` data file so both interfaces stay in sync.
+A Flask web app that exposes the same CRUD operations as the CLI, sharing the same `todos.json` data file via `todo_store.py` so both interfaces stay in sync.
 
 ### Requirements
 
 - Python 3.8+
 - Flask (`pip install -r requirements.txt`)
 
-### Usage
+### Install and run
 
 ```
 pip install -r requirements.txt
-python app.py
+python webapp.py
 ```
 
 Opens on **http://localhost:5000**. Supports add, mark done, and remove — same operations as the CLI.
@@ -74,7 +74,8 @@ Opens on **http://localhost:5000**. Supports add, mark done, and remove — same
 |---|---|
 | `README.md` | This file |
 | `todo.py` | Python CLI ToDo app |
-| `app.py` | Flask web UI |
+| `todo_store.py` | Shared JSON load/save helpers (used by CLI and web) |
+| `webapp.py` | Flask web UI |
 | `templates/index.html` | Web UI template |
 | `requirements.txt` | Python dependencies (`flask>=3.0`) |
 | `AGENTS.md` | Agent workflow rules |
